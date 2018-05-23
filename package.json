@@ -50,6 +50,9 @@
     "webpack-dev-server": "^3.1.4"
   },
   "dependencies": {
+    "@types/algoliasearch": "^3.27.3",
+    "algoliasearch": "^3.27.1",
+    "algoliasearch-helper": "^2.26.0",
     "history": "^4.7.2",
     "inferno": "^3",
     "inferno-component": "^3",
