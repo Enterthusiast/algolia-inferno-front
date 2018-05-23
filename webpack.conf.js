@@ -8,7 +8,7 @@ module.exports = {
 	output: {
         path: __dirname + '/public',
 		filename: 'bundle.js',
-		publicPath: 'http://localhost:8080/'
+		publicPath: ''
 	},
 	resolve: {
 		extensions: [ '.js', '.jsx', '.ts', '.tsx' ]
