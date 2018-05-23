@@ -13,6 +13,8 @@ function App({ children }) {
     return (
 		<div>
 			<h1>Algolia Inferno Test</h1>
+			<Link to="/">Home</Link>
+			<br/>
 			<Link to="/test">Test</Link>
             {children}
 		</div>
