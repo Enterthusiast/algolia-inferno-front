@@ -28,8 +28,6 @@ export default class Search extends Component<any, any> {
 
   facetList(): any {
 
-    console.log(this.props.facets);
-
     if(this.props.facets && this.props.facets.length > 0) {
       return this.props.facets.map((facet: any) => {
         return (

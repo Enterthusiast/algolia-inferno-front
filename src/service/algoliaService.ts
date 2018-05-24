@@ -8,9 +8,12 @@ const algoliaClient = algoliasearch(environment.applicationID, environment.apiKe
 var algoliaHelper = algoliasearchHelper(algoliaClient, environment.indexName, {disjunctiveFacets: ['category']});
 
 export default {
-    search(searchValue?: string) {
+    search(searchValue?: string, pageNumber?: number) {
         let asyncSearch = new Promise((resolve, resject) => {
-            algoliaHelper.setQuery(searchValue).search();
+            algoliaHelper
+                .setQuery(searchValue)
+                .setPage(pageNumber)
+                .search();
             algoliaHelper.on('result', (algoliaSearch) => {
                 resolve(algoliaSearch);
             });

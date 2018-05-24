@@ -16,8 +16,6 @@ export default class Search extends Component<any, any> {
 
   hitList(): any {
 
-    console.log(this.props.hits);
-
     if(this.props.hits && this.props.hits.length > 0) {
       return this.props.hits.map((hit: any) => {
         return (

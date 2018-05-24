@@ -21,9 +21,9 @@ export default class Search extends Component<any, any> {
       <div>
         <nav class="navbar-fixed">
           <div class="nav-wrapper">
-            <form>
+            <form onSubmit={(e) => { e.preventDefault(); }} >
               <div class="input-field">
-                <input id="searchInput" type="search" placeholder="What are you looking for?" onKeyUp={linkEvent(this, this.handleKeyUp)} />
+                <input id="searchInput" type="search" placeholder="What app are you looking for?" onKeyUp={linkEvent(this, this.handleKeyUp)} />
                 <label class="label-icon" htmlFor="searchInput"><i class="material-icons">search</i></label>
                 <i class="material-icons">close</i>
               </div>
