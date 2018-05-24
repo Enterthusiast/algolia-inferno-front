@@ -2,13 +2,14 @@ const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+const ASSET_PATH = process.env.ASSET_PATH || '/';
 
 module.exports = {
 	entry: "./src/index.tsx", // Point to main file
 	output: {
         path: __dirname + '/public',
 		filename: 'bundle.js',
-		publicPath: './public'
+		publicPath: ASSET_PATH
 	},
 	resolve: {
 		extensions: [ '.js', '.jsx', '.ts', '.tsx' ]

@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "start": "webpack-dev-server --mode development --config webpack.conf.js --host 0.0.0.0",
-    "build": "webpack -p --config webpack.conf.js",
+    "build": "ASSET_PATH=./public webpack -p --config webpack.conf.js",
     "lint": "eslint src"
   },
   "repository": {
