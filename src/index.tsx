@@ -28,6 +28,12 @@ class App extends Component<any, appState> {
 		};
 	}
 
+	componentDidMount() {
+		// Initialize with an empty search
+		// this way the user has some data to start from
+		this.search();
+	}
+
 	// This is an easy way to get the isRefined param
 	// This param is not available in facet.data by default
 	facetsData(algoliaSearch) {
@@ -55,7 +61,7 @@ class App extends Component<any, appState> {
 		});
 	}
 
-	search(searchValue: string) {
+	search(searchValue?: string) {
 		algoliaService.search(searchValue).then((algoliaSearch) => {
 			console.log(algoliaSearch);
 
@@ -73,11 +79,19 @@ class App extends Component<any, appState> {
 	
 	render() {
 		return (
-			<div>
-				<h1>Algolia technical test - Inferno - Frontend</h1>
-				<SearchBox search={this.search.bind(this)} />
-				<Faceting facets={this.state.facets} toggle={this.facetToggle.bind(this)}/>
-				<Hits hits={this.state.hits} />
+			<div className="container">
+				<div className="row">
+					<h1>AppStore Search</h1>
+					<SearchBox search={this.search.bind(this)} />
+				</div>
+				<div className="row">
+					<div class="col s12 m3 l4">
+						<Faceting facets={this.state.facets} toggle={this.facetToggle.bind(this)}/>
+					</div>
+					<div class="col s12 m9 l8">
+						<Hits hits={this.state.hits} />
+					</div>
+				</div>
 			</div>
 		)
 	}

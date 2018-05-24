@@ -11,6 +11,21 @@ export default class Search extends Component<any, any> {
     instance.props.toggle(facetName);
   }
 
+  dataList(facet): any {
+    return Object.keys(facet.data).map((dataName: any) => {
+      return (
+        <a className={facet.refined[dataName] ? 'collection-item active' : 'collection-item'}
+            key={dataName}
+            data-facet-name={dataName}
+            data-selected="false"
+            onClick={linkEvent(this, this.handleClick)}>
+              <span class="new badge teal" data-badge-caption="">{facet.data[dataName]}</span>
+              {dataName}
+        </a>
+      )
+    })
+  }
+
   facetList(): any {
 
     console.log(this.props.facets);
@@ -18,20 +33,10 @@ export default class Search extends Component<any, any> {
     if(this.props.facets && this.props.facets.length > 0) {
       return this.props.facets.map((facet: any) => {
         return (
-          <ul>
-            {facet.name}
-            {
-              Object.keys(facet.data).map((dataName: any) => {
-                return (
-                  <li key={dataName}
-                      data-facet-name={dataName}
-                      style={facet.refined[dataName] ? 'background-color: grey' : ''}
-                      data-selected="false"
-                      onClick={linkEvent(this, this.handleClick)}>{dataName} - {facet.data[dataName]}</li>
-                )
-              })
-            }
-          </ul>
+          <div className="collection with-header">
+            <div className="collection-header"><h6>{facet.name[0].toUpperCase() + facet.name.slice(1)}</h6></div>
+            {this.dataList(facet)}
+          </div>
         )
       })
     } else {
@@ -44,7 +49,6 @@ export default class Search extends Component<any, any> {
   render() {
     return (
       <div>
-        Faceting
         {this.facetList()}
       </div>
     )

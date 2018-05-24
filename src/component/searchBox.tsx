@@ -19,8 +19,17 @@ export default class Search extends Component<any, any> {
   render() {
     return (
       <div>
-        Search
-        <input type="text" id="searchInput" onKeyUp={linkEvent(this, this.handleKeyUp)} />
+        <nav class="navbar-fixed">
+          <div class="nav-wrapper">
+            <form>
+              <div class="input-field">
+                <input id="searchInput" type="search" placeholder="What are you looking for?" onKeyUp={linkEvent(this, this.handleKeyUp)} />
+                <label class="label-icon" htmlFor="searchInput"><i class="material-icons">search</i></label>
+                <i class="material-icons">close</i>
+              </div>
+            </form>
+          </div>
+        </nav>
       </div>
     )
   }
