@@ -1,8 +1,14 @@
 #app {
-    background-color: white;
+    background-color: #fff;
 }
 
-.nav-header {
+.algolia-highlight {
+    background-color: #ee6e73;
+    text-decoration: underline;
+    color: #fff;
+}
+
+.consistent-padding {
     padding: 0 1.5rem 0 .75rem;
 }
 nav {

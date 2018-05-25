@@ -37,10 +37,10 @@ class App extends Component<any, appState> {
 			facets: [],
 			sort: 'desc',
 			pagination: {
-				previous: 1,
-				list: [],
-				next: 1,
-				current: 1,
+				previous: 0,
+				list: [0],
+				next: 0,
+				current: 0,
 				total: 1
 			}
 		};
@@ -168,12 +168,7 @@ class App extends Component<any, appState> {
 	}
 	
 	render() {
-		return (
-			<div className="container">
-				<div className="row nav-header">
-					<h3>AppStore Search</h3>
-					<SearchBox search={this.search.bind(this)} />
-				</div>
+		const resultLayout = this.state.hits.length > 0 ? (
 				<div className="row">
 					<div className="col s12 m3 l4">
 						<Faceting facets={this.state.facets} toggle={this.facetToggle.bind(this)}/>
@@ -184,6 +179,25 @@ class App extends Component<any, appState> {
 						<Hits hits={this.state.hits} />
 					</div>
 				</div>
+		) : (
+			<div className="row consistent-padding">
+				<div className="card horizontal hoverable">
+					<div className="card-stacked">
+					<div className="card-content center-align">
+						<span class="card-title">No result</span>
+					</div>
+					</div>
+				</div>
+			</div>
+		)
+
+		return (
+			<div className="container">
+				<div className="row consistent-padding">
+					<h3>AppStore Search</h3>
+					<SearchBox search={this.search.bind(this)} />
+				</div>
+				{resultLayout}
 			</div>
 		)
 	}

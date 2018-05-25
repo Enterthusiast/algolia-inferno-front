@@ -1,6 +1,6 @@
 import { linkEvent, Component } from 'inferno';
 
-export default class Search extends Component<any, any> {
+export default class Faceting extends Component<any, any> {
   constructor(props) {
     super(props);
 
@@ -47,7 +47,15 @@ export default class Search extends Component<any, any> {
       })
     } else {
       return (
-        <ul>No facet</ul>
+        <div className="row consistent-padding">
+          <div className="card horizontal hoverable">
+            <div className="card-stacked">
+            <div className="card-content center-align">
+              <span class="card-title">No Facet</span>
+            </div>
+            </div>
+          </div>
+        </div>
       )
     } 
   }
