@@ -8,6 +8,15 @@
     color: #fff;
 }
 
+
+.search-match {
+    position: absolute;
+    top: 0;
+    right: 50;
+    max-width: 110;
+    color: #a5a3a3;
+}
+
 .consistent-padding {
     padding: 0 1.5rem 0 .75rem;
 }

@@ -34,12 +34,12 @@ export default class Hits extends Component<any, any> {
                   <div className="card-stacked">
                   
                     <div className="card-content">
-                      <span class="card-title" dangerouslySetInnerHTML={{ __html: this.hitString(hit, 'name') }}></span>
+                      <span className="card-title" dangerouslySetInnerHTML={{ __html: this.hitString(hit, 'name') }}></span>
                       <p className="valign-wrapper">
-                        <i class="material-icons">filter_list</i><span class="new badge grey" data-badge-caption="">{hit.rank}</span>
+                        <i className="material-icons">filter_list</i><span className="new badge grey" data-badge-caption="">{hit.rank}</span>
                       </p>
                       <p className="valign-wrapper">
-                        <i class="material-icons">folder_open</i><span class="new badge grey" data-badge-caption="" dangerouslySetInnerHTML={{ __html: this.hitString(hit, 'category') }}></span>
+                        <i className="material-icons">folder_open</i><span className="new badge grey" data-badge-caption="" dangerouslySetInnerHTML={{ __html: this.hitString(hit, 'category') }}></span>
                       </p>
                     </div>
                     <div className="card-action">
@@ -57,7 +57,7 @@ export default class Hits extends Component<any, any> {
           <div className="card horizontal hoverable">
             <div className="card-stacked">
             <div className="card-content center-align">
-              <span class="card-title">No Hit</span>
+              <span className="card-title">No Hit</span>
             </div>
             </div>
           </div>

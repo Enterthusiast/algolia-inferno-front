@@ -27,7 +27,7 @@ export default class Faceting extends Component<any, any> {
             data-facet-name={dataName}
             data-selected="false"
             onClick={linkEvent(this, this.handleClick)}>
-              <span class="new badge teal" data-badge-caption="">{facet.data[dataName]}</span>
+              <span className="new badge teal" data-badge-caption="">{facet.data[dataName]}</span>
               {dataName}
         </a>
       )
@@ -51,7 +51,7 @@ export default class Faceting extends Component<any, any> {
           <div className="card horizontal hoverable">
             <div className="card-stacked">
             <div className="card-content center-align">
-              <span class="card-title">No Facet</span>
+              <span className="card-title">No Facet</span>
             </div>
             </div>
           </div>
@@ -81,7 +81,7 @@ export default class Faceting extends Component<any, any> {
     return (
       <div>
         <div className="responsive-faceting-button center-align">
-          <a class="waves-effect waves-light btn" onClick={linkEvent(this, this.toggleVisibility)}>
+          <a className="waves-effect waves-light btn" onClick={linkEvent(this, this.toggleVisibility)}>
             Toggle Filter(s)
           </a>
         </div>

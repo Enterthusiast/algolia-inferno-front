@@ -17,6 +17,7 @@ import algoliaService from './service/algoliaService';
 interface appState {
 	search: string;
 	hits: any[];
+	nbHits: number;
 	facets: any[];
 	sort: string,
 	pagination: {
@@ -34,6 +35,7 @@ class App extends Component<any, appState> {
 		this.state = {
 			search: '',
 			hits: [],
+			nbHits: null,
 			facets: [],
 			sort: 'desc',
 			pagination: {
@@ -69,15 +71,25 @@ class App extends Component<any, appState> {
 	}
 
 	update(algoliaSearch) {
+		this.hitsStateUpdate(algoliaSearch);
 		this.facetsStateUpdate(algoliaSearch);
 		this.paginationStateUpdate(algoliaSearch);
+	}
+
+	hitsStateUpdate(algoliaSearch) {
+		this.setState((prevState, props) => {
+			return {					
+				...prevState,
+				hits: algoliaSearch['hits'],
+				nbHits: algoliaSearch['nbHits'],
+			};
+		});
 	}
 
 	facetsStateUpdate(algoliaSearch) {
 		this.setState((prevState, props) => {
 			return {					
 				...prevState,
-				hits: algoliaSearch['hits'],
 				facets: this.facetsData(algoliaSearch)
 			};
 		});
@@ -184,7 +196,7 @@ class App extends Component<any, appState> {
 				<div className="card horizontal hoverable">
 					<div className="card-stacked">
 					<div className="card-content center-align">
-						<span class="card-title">No result</span>
+						<span className="card-title">No result</span>
 					</div>
 					</div>
 				</div>
@@ -195,7 +207,7 @@ class App extends Component<any, appState> {
 			<div className="container">
 				<div className="row consistent-padding">
 					<h3>AppStore Search</h3>
-					<SearchBox search={this.search.bind(this)} />
+					<SearchBox nbHits={this.state.nbHits} search={this.search.bind(this)} />
 				</div>
 				{resultLayout}
 			</div>

@@ -26,13 +26,14 @@ export default class Search extends Component<any, any> {
   render() {
     return (
       <div>
-        <nav class="navbar-fixed">
-          <div class="nav-wrapper">
+        <nav className="navbar-fixed">
+          <div className="nav-wrapper">
             <form onSubmit={(e) => { e.preventDefault(); }} >
-              <div class="input-field">
-                <input id="searchInput" type="search" placeholder="What app are you looking for?" onKeyUp={linkEvent(this, this.handleKeyUp)} />
-                <label class="label-icon" htmlFor="searchInput"><i class="material-icons">search</i></label>
-                <i class="material-icons" onClick={linkEvent(this, this.clearInput)}>close</i>
+              <div className="input-field">
+                <input id="searchInput" type="search" autoComplete="off" autoCorrect="off" autoCapitalize="off" placeholder="Search" onKeyUp={linkEvent(this, this.handleKeyUp)} />
+                <label className="label-icon" htmlFor="searchInput"><i className="material-icons">search</i></label>
+                <span className="search-match right-align">{this.props.nbHits} result(s)</span>
+                <i className="material-icons" onClick={linkEvent(this, this.clearInput)}>close</i>
               </div>
             </form>
           </div>

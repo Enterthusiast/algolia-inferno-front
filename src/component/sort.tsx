@@ -38,9 +38,9 @@ export default class Sort extends Component<any, any> {
     render() {
         return (
             <div className="center-align">
-                <a class="waves-effect waves-light btn" onClick={linkEvent(this.newSort.bind(this), this.props.change)}>
+                <a className="waves-effect waves-light btn" onClick={linkEvent(this.newSort.bind(this), this.props.change)}>
                     {this.displayString()}
-                    <i class="material-icons right">{this.displayIcon()}</i>
+                    <i className="material-icons right">{this.displayIcon()}</i>
                 </a>
             </div>
         )
