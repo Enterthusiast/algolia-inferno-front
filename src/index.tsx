@@ -8,6 +8,7 @@ import '../src/main.css';
 import Faceting from './component/faceting';
 import Hits from './component/hits';
 import Pagination from './component/Pagination';
+import Sort from './component/Sort';
 import SearchBox from './component/searchBox';
 
 // service
@@ -17,6 +18,7 @@ interface appState {
 	search: string;
 	hits: any[];
 	facets: any[];
+	sort: string,
 	pagination: {
 		previous: number,
 		list: number[],
@@ -33,6 +35,7 @@ class App extends Component<any, appState> {
 			search: '',
 			hits: [],
 			facets: [],
+			sort: 'desc',
 			pagination: {
 				previous: 1,
 				list: [],
@@ -66,11 +69,34 @@ class App extends Component<any, appState> {
 	}
 
 	update(algoliaSearch) {
+		this.facetsStateUpdate(algoliaSearch);
+		this.paginationStateUpdate(algoliaSearch);
+	}
+
+	facetsStateUpdate(algoliaSearch) {
 		this.setState((prevState, props) => {
 			return {					
 				...prevState,
 				hits: algoliaSearch['hits'],
 				facets: this.facetsData(algoliaSearch)
+			};
+		});
+	}
+
+	sortStateUpdate() {
+		this.setState((prevState, props) => {
+			let sort = '';
+			if(prevState.sort === 'asc') {
+				sort = 'desc';
+			} else if(prevState.sort === 'desc') {
+				sort = 'asc';
+			} else {
+				sort = 'desc';
+			}
+
+			return {					
+				...prevState,
+				sort: sort,
 			};
 		});
 	}
@@ -118,21 +144,25 @@ class App extends Component<any, appState> {
 		});
 
 		algoliaService.search(searchValue).then((algoliaSearch: any) => {
-			this.paginationStateUpdate(algoliaSearch);
 			this.update(algoliaSearch);
 		});
 	}
 
 	pageChange(pageNumber: number) {
 		algoliaService.search(this.state.search, pageNumber).then((algoliaSearch: any) => {
-			this.paginationStateUpdate(algoliaSearch);
+			this.update(algoliaSearch);
+		});
+	}
+
+	sortChange(getOrderName: Function) {
+		algoliaService.sortChange(this.state.search, getOrderName()).then((algoliaSearch: any) => {
+			this.sortStateUpdate();
 			this.update(algoliaSearch);
 		});
 	}
 
 	facetToggle(facetName: string) {
 		return algoliaService.facetToggle('category', facetName).then((algoliaSearch) => {
-			this.paginationStateUpdate(algoliaSearch);
 			this.update(algoliaSearch);
 		})
 	}
@@ -145,11 +175,12 @@ class App extends Component<any, appState> {
 					<SearchBox search={this.search.bind(this)} />
 				</div>
 				<div className="row">
-					<div class="col s12 m3 l4">
+					<div className="col s12 m3 l4">
 						<Faceting facets={this.state.facets} toggle={this.facetToggle.bind(this)}/>
 					</div>
-					<div class="col s12 m9 l8">
+					<div className="col s12 m9 l8">
 						<Pagination {...this.state.pagination} change={this.pageChange.bind(this)}/>
+						<Sort sort={this.state.sort} change={this.sortChange.bind(this)}/>
 						<Hits hits={this.state.hits} />
 					</div>
 				</div>

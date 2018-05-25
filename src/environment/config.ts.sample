@@ -1,5 +1,7 @@
 export default {
     applicationID: '**********',
     apiKey: '********************************',
-    indexName: 'your_index_name'
+    indexName: 'your_index_name',
+    indexNameAsc: 'your_index_name_column_name_asc',
+    indexNameDesc: 'your_index_name_column_name_desc'
 }
