@@ -16,6 +16,13 @@ export default class Search extends Component<any, any> {
     instance.props.search(searchValue);
   }
 
+  clearInput(instance) {
+    // @ts-ignore
+    searchInput.value = '';
+
+    instance.handleKeyUp(instance);
+  }
+
   render() {
     return (
       <div>
@@ -25,7 +32,7 @@ export default class Search extends Component<any, any> {
               <div class="input-field">
                 <input id="searchInput" type="search" placeholder="What app are you looking for?" onKeyUp={linkEvent(this, this.handleKeyUp)} />
                 <label class="label-icon" htmlFor="searchInput"><i class="material-icons">search</i></label>
-                <i class="material-icons">close</i>
+                <i class="material-icons" onClick={linkEvent(this, this.clearInput)}>close</i>
               </div>
             </form>
           </div>
