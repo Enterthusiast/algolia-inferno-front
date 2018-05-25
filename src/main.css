@@ -2,6 +2,16 @@
     background-color: white;
 }
 
+.nav-header {
+    padding: 0 1.5rem 0 .75rem;
+}
+nav {
+    background-color: #fff;
+}
+nav .input-field label.active i {
+    color: #ee6e73;
+}
+
 .faceting-small-show {
     display: inherit;
 }

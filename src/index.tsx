@@ -170,7 +170,7 @@ class App extends Component<any, appState> {
 	render() {
 		return (
 			<div className="container">
-				<div className="row">
+				<div className="row nav-header">
 					<h3>AppStore Search</h3>
 					<SearchBox search={this.search.bind(this)} />
 				</div>
