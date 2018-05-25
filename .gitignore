@@ -30,3 +30,6 @@ package-lock.json
 
 # Mac OS
 .DS_Store
+
+# Environment
+src/environment/config.ts
