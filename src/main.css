@@ -1,3 +1,35 @@
 #app {
     background-color: white;
 }
+
+.faceting-small-show {
+    display: inherit;
+}
+.faceting-small-hide {
+    display: inherit;
+}
+
+.responsive-faceting {
+    display: inherit;
+}
+.responsive-faceting-button {
+    display: none;
+}
+
+@media (max-width: 600px) {
+
+    .faceting-small-show {
+        display: inherit !important;
+    }
+    .faceting-small-hide {
+        display: none !important;
+    }
+
+    .responsive-faceting {
+        display: none;
+    }
+    .responsive-faceting-button {
+        display: inherit;
+    }
+
+}
