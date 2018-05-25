@@ -18,6 +18,10 @@ nav .input-field label.active i {
     color: #ee6e73;
 }
 
+.facet-cursor {
+    cursor: pointer;
+}
+
 .faceting-small-show {
     display: inherit;
 }

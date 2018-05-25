@@ -22,7 +22,7 @@ export default class Faceting extends Component<any, any> {
   dataList(facet): any {
     return Object.keys(facet.data).map((dataName: any) => {
       return (
-        <a className={facet.refined[dataName] ? 'collection-item active' : 'collection-item'}
+        <a className={facet.refined[dataName] ? 'collection-item facet-cursor active' : 'collection-item facet-cursor'}
             key={dataName}
             data-facet-name={dataName}
             data-selected="false"
