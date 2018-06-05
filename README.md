@@ -51,7 +51,7 @@ So always build and push to Github before deploying.
 
 ## Live version
 https://algolia-inferno-front.herokuapp.com/
-
+https://enterthusiast.github.io/algolia-inferno-front/ (quicker first load)
 
 ## TODO
 
